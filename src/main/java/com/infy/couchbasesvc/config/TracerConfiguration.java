@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import javax.servlet.ServletContextEvent;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 
 import com.uber.jaeger.Configuration;
 //import com.uber.jaeger.micrometer.MicrometerMetricsFactory;
@@ -19,6 +20,7 @@ public class TracerConfiguration {
 	
 
 	@Bean
+    @ConditionalOnMissingBean
 	public io.opentracing.Tracer tracer() {
 		//MicrometerMetricsFactory metricsFactory1 = new MicrometerMetricsFactory();
 	    Configuration configuration = new Configuration("couchbasesvc");
