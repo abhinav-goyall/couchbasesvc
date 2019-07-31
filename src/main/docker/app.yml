@@ -1,0 +1,14 @@
+version: '2'
+services:
+    couchbasesvc-app:
+        image: couchbasesvc
+        environment:
+            - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_COUCHBASE_BOOTSTRAP_HOSTS=couchbasesvc-couchbase
+            - SPRING_COUCHBASE_BUCKET_NAME=couchbasesvc
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+    couchbasesvc-couchbase:
+        extends:
+            file: couchbase.yml
+            service: couchbasesvc-couchbase
