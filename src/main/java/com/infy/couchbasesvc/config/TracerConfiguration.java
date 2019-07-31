@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import javax.servlet.ServletContextEvent;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 
 import com.uber.jaeger.Configuration;
 //import com.uber.jaeger.micrometer.MicrometerMetricsFactory;
