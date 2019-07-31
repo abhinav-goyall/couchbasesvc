@@ -8,10 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -26,24 +24,10 @@ private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(EmployeeR
 org.springframework.boot.info.BuildProperties buildProperties;
 @org.springframework.beans.factory.annotation.Autowired
 org.springframework.web.client.RestTemplate restTemplate;
-@org.springframework.beans.factory.annotation.Autowired
-private io.opentracing.Tracer tracer;
-@GetMapping("/ping")
-public String ping() {
-	LOGGER.info("Ping: name={}, version={}", buildProperties.getName(), buildProperties.getVersion());
-	tracer.activeSpan().setBaggageItem("transaction", "ping");
-	System.out.println("transaction name"+tracer.activeSpan().getBaggageItem("transaction"));
-	String response = restTemplate.getForObject("http://localhost:8091/hello/ping", String.class);
-	LOGGER.info("Calling: response={}", response);
-	return buildProperties.getName() + ":" + buildProperties.getVersion() + ". Calling... " + response;
-}// {
-
+// {
     private final Logger log = LoggerFactory.getLogger(EmployeeResource.class);
-
     private static final String ENTITY_NAME = "couchbasesvcEmployee";
-
     private final EmployeeService employeeService;
-
     public EmployeeResource(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
